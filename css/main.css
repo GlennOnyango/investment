@@ -1,0 +1,111 @@
+
+#faq {
+  /* The image used */
+  background-image: url(../image/faq-frequently-asked-questions-GUPYSSA.jpg);
+  /* Set a specific height */
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+#learning {
+  /* The image used */
+  background-image: url(../image/Concept_01-03.png);
+  /* Set a specific height */
+  height: 70vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+
+
+
+  @media only screen and (max-width: 600px) {
+    #movein {
+      /* The image used */
+      background-image: url(../image/portait-of-software-designer-working-in-office-39ZRH2C.jpg);
+      /* Set a specific height */
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    
+    }
+     
+
+  }
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  
+  @media only screen and (min-width: 699px) {
+  
+ 
+#movein {
+  /* The image used */
+  background-image: url(../image/portait-of-software-designer-working-in-office-39ZRH2C.jpg);
+  /* Set a specific height */
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+} 
+  }
+  
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  
+  @media only screen and (min-width: 700px) {
+ 
+    
+#movein {
+  /* The image used */
+  background-image: url(../image/portait-of-software-designer-working-in-office-39ZRH2C.jpg);
+  /* Set a specific height */
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+  }
+  
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  
+  @media only screen and (min-width: 992px) {
+ 
+#movein {
+  /* The image used */
+  background-image: url(../image/portait-of-software-designer-working-in-office-39ZRH2C.jpg);
+  /* Set a specific height */
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+} 
+  }
+  
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  
+  @media only screen and (min-width: 1400px) {
+  
+#movein {
+  /* The image used */
+  background-image: url(../image/portait-of-software-designer-working-in-office-39ZRH2C.jpg);
+  /* Set a specific height */
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+  }
+  
