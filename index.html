@@ -15,28 +15,78 @@
   </head>
   <body style="background-image: url('background/banking-and-savings-JG8S8GJ.jpg');background-repeat: no-repeat;background-size: cover">
 
-    <div class="row bg-white ps-1 pe-1 pt-0 pb-0">
-      <p class="text-end bg-danger m-0">
-        <a class="pe-3 ps-2" style="border-right :1px solid #333333">Call center : +27860309250</a>
-        <a class="pe-3 ps-2" style="border-right :1px solid #333333">Business internet banking</a>
-        <a class="pe-3 ps-2" style="border-right :1px solid #333333">Contact US </a>
-        <a class="pe-3 ps-2" style="border-right :1px solid #333333">About Us </a>
-        <a class="ps-1 pe-1" >Careers </a>
+    <div class="row bg-white ps-1 pe-1 pt-0 pb-0" style="border-bottom:1px solid #eee;margin-left: 0%;margin-right: 0%;">
+      <p class="text-end m-0">
+        <a class="pe-3 ps-2 text-decoration-none" style="border-right :1px solid #333333">Call center : +27860309250</a>
+        <a class="pe-3 ps-2 text-decoration-none" style="border-right :1px solid #333333">Business internet banking</a>
+        <a class="pe-3 ps-2 text-decoration-none" style="border-right :1px solid #333333">Contact US </a>
+        <a class="pe-3 ps-2 text-decoration-none" style="border-right :1px solid #333333">About Us </a>
+        <a class="ps-1 pe-1 text-decoration-none" >Careers </a>
         <a class="btn btn-secondary rounded-0">Login</a>
      </p>
       
     </div>
 
+    <div class="row mb-5"  style="margin-left: 0%;margin-right: 0%;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+
+          <a class="navbar-brand" href="#"><img src="background/Mercantile.png" height="50"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="business" aria-current="page" data-bs-toggle="dropdown" aria-expanded="false">Business</a>
+                <ul class="dropdown-menu" aria-labelledby="business">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="pp" data-bs-toggle="dropdown" aria-expanded="false">Private &amp; Professionals</a>
+                <ul class="dropdown-menu" aria-labelledby="pp">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Investments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Treasury</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Payment Solutions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Rental Finance</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
     <div class="row" style="margin-left: 0%;margin-right: 0%;">
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 offset-lx-4 offset-lg-4 offset-md-4 offset-sm-2 pt-3 shadow-lg" style="background-color: rgba(255, 255, 255, 0.5);">
-        <h3 class="text-center text-light ">Investments and banking</h3>
+        <h3 class="text-center text-primary ">Global Investments and bank LTD</h3>
         <form class="row"> 
 
           <label for="email_user" class="form-label">Username </label>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" id="email_user" class="form-control" placeholder="Enter email address " aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" name="email_login" id="email_user" class="form-control" placeholder="Enter email address " aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
 
@@ -45,14 +95,46 @@
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">P</span>
-            <input type="password" id="password_user" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="password" name="password_login" id="password_user" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="basic-addon1">
           </div>
 
           <p class="text-center"><button type="submit" class="btn btn-success">Login</button> <button class="btn btn-success">Cancel</button></p>
-          <p class="text-center"><a href="/">Forgotten my account</a> <a class="text-decoration-underline" href="/" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create an account</a></p>
+          <p class="text-center"><a href="/" class="text-dark" data-bs-toggle="modal" data-bs-target="#forgot_email">Forgotten my account</a> <a class="text-dark" href="/" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create an account</a></p>
         </form>
       </div>
     </div>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="forgot_email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Recover Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="reg_form" action="" method="POST">
+             <div class="modal-body">
+
+          <label for="first_name">Email address</label>
+          <div class="input-group mb-3">
+            <input type="email" id="first_name" name="email_recover" class="form-control" required placeholder="Enter Email address" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Recover</button>
+      </div>
+
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
 
     <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -62,23 +144,53 @@
         <h5 class="modal-title" id="staticBackdropLabel">Welcome aboard</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form>
+      <form id="reg_form" action="" method="POST">
+             <div class="modal-body">
 
-          <div class="input-group mb-3 bg-danger">
-         
-            <div></div>
-         
-            <input type="file" class="form-control" id="inputGroupFile01">
+          <label for="first_name">Fisrt Name *</label>
+          <div class="input-group mb-3">
+            <input type="text" id="first_name" name="first_name" class="form-control" required placeholder="First Name" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+          <label for="last_name">Last Name *</label>
+          <div class="input-group mb-3">
+            <input type="text" id="last_name" name="last_name" class="form-control" required placeholder="Last Name" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <label for="email">Email *</label>
+          <div class="input-group mb-3">
+            <input type="email" id="email" name="email" class="form-control" required placeholder="email address" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <label for="phone">Phone *</label>
+          <div class="input-group mb-3">
+            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Phone number" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
 
-        </form>
+          <label for="password">Password *</label>
+          <div class="input-group mb-3">
+            <input type="password" id="password" name="password" class="form-control" required placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+          <label for="confirm_password">Confirm Password *</label>
+          <div class="input-group mb-3">
+            <input type="password" id="confirm_password" class="form-control" required placeholder="Confirm Password" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <label for="confirm_password">Upload Photo *</label>
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" name="user_photo" required accept="image/x-png,image/gif,image/jpeg" id="inputGroupFile02">
+            <label class="input-group-text" for="inputGroupFile02">Upload Photo</label>
+          </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+
+    </form>
     </div>
   </div>
 </div>

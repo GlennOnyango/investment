@@ -1,42 +1,27 @@
-$( document ).ready(function() {
+var reg_form = document.querySelector("#reg_form");
+var log_form = document.querySelector("#log_form");
+var for_form = document.querySelector("#for_form");
 
-    // Assign handlers immediately after making the request,
-    // and remember the jqxhr object for this request
+reg_form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const formData = new FormData(reg_video);
 
 
-let myinput = $(".myinput");
-let wizards = $("#wizards-list");
-
-
-myinput.on("input",()=>{
-
-  fetch(`https://techsupport.dewcis.com/dataworks/?value_from_search_post=${myinput.val()}`, {
-    method: "GET"
-  
-})
-.then(function(response) { return response.json() })
-.then(function(data) {
-
-  wizards.remove("option");
-
-data.forEach(element => {
-console.log(element);
-  wizards.append(`<option value="${element["post_title"]}"/>`);
-
+  console.log("done");
 });
 
-})
-.catch(function(errror) { console.error(errror); });
+log_form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const formData = new FormData(log_form);
 
 
-
-
+  console.log("done");
 });
 
-  
+for_form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const formData = new FormData(for_form);
 
 
-  
-  });
-  
-  
+  console.log("done");
+});
