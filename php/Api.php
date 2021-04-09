@@ -69,17 +69,17 @@ class Db_controller{
 
         $random = random_gen($db);
 
+        $result_from_image_path_user = familyName($_FILES['image_path'],'upload_images/');
 
-        if($random == '0'){
-
-            return "Failed";
+        if($result == 0 ){
+            return "Failed on image upload";
         }
 
         
 
         $query = "INSERT INTO entitys(
              account_number, email, first_name, last_name, phone_number, entity_password, image_path, function_role, activated, approved)
-            VALUES ( $random, $email, $fname, $lname, $phone_no, $my_pass, $path, 'client', 'f', 'f')";
+            VALUES ( $random, $email, $fname, $lname, $phone_no, $my_pass, $result_from_image_path_user, 'client', 'f', 'f')";
 
 
         $result = pg_query($db, $query);
@@ -91,6 +91,8 @@ class Db_controller{
         else{
             return"Client was added to the system";
         }
+
+
     }
 
     function random_gen($db){
@@ -103,9 +105,29 @@ class Db_controller{
 
         if (!$result) {
             return $random;
+        }else {
+            random_gen($db);
         }
-        return 0;
     }
+    function familyName($filename,$folder) {
+
+        $target_dir = $folder;
+        $target_file = $target_dir . basename($filename['name']);
+        $tmp_image = $filename['tmp_name'];
+           $error = "";
+            
+           if (file_exists($target_file)) {
+               $error = $target_dir."File already exist";
+               return 0;
+           } elseif(move_uploaded_file($tmp_image, $target_file)){
+               return $filename['name'];
+              // return $target_dir;
+       } else{
+               $error = "File not uploaded";
+               return 0;
+       }               
+    }
+    
 }
 
 
