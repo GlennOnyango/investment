@@ -2,7 +2,7 @@
 
 $host        = "host = localhost";
 $port        = "port = 5432";
-$dbname      = "dbname = investments";
+$dbname      = "dbname = investment";
 $credentials = "user = postgres password=Tedd123.";
 
 $db = pg_connect( "$host $port $dbname $credentials"  );
