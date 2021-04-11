@@ -16,9 +16,13 @@ CREATE TABLE entitys(
 
 CREATE TABLE payments(
     payments_id      serial primary key,
-    account_number   references entitys,
-    receipt_no       UNIQUE key varchar(20),
+    account_number   varchar(10) ,
+    receipt_no        varchar(20) UNIQUE,
     payment_date     date,
+    payment_data_sumbit DATE ,
     payment_amount   real,
-    receipt_image    varchar(100)
-)
+    receipt_image    varchar(100),
+	 CONSTRAINT fk_accnumber
+      FOREIGN KEY(account_number) 
+	  REFERENCES entitys(account_number)
+);

@@ -20,7 +20,21 @@ $(document).ready(function() {
     // your code
 
     $.get("http://localhost/investment/php/Api.php", { option: "Data" }, function(data, status) {
-        console.log("Data: " + data + "\nStatus: " + status);
+        console.log("Data: " + typeof data + "\nStatus: " + status);
+
+        const obj = JSON.parse(data);
+        console.log(obj);
+        $("#client_name").text(obj.fname);
+
+
+        //Editables
+
+        $("#editable_acc").text(obj.acc_no);
+        $("#editable_fname").text(obj.fname);
+        $("#editable_lname").text(obj.sname);
+        $("#editable_mail").text(obj.mail);
+        $("#editable_phone").text(obj.pno);
+
     });
 
 

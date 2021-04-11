@@ -86,7 +86,7 @@ class Db_controller{
 
 
     function login($db,$email,$password){
-        $query = "SELECT entity_id,account_number,function_role,first_name,last_name FROM entitys WHERE email = '$email' AND entity_password = '$password'";
+        $query = "SELECT entity_id,account_number,function_role,first_name,last_name,email,phone_number FROM entitys WHERE email = '$email' AND entity_password = '$password'";
 
         $result = pg_query($db, $query);
 
@@ -106,6 +106,8 @@ class Db_controller{
              $_SESSION['role'] =  $row['function_role'];
              $_SESSION['fname'] =  $row['first_name'];
              $_SESSION['lname'] =  $row['last_name']; 
+             $_SESSION['pno'] = $row['phone_number'];
+             $_SESSION['mail'] = $row['email'];
         }
 
     }
