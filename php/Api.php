@@ -4,40 +4,86 @@ session_start();
 require_once ("Connection.php");
 
 
+
 $my_controller = new Db_controller();
-//echo $my_controller -> random_gen($db);
 
 if ($_POST) {
     
-    if($_POST['email_reg']){
-      echo $my_controller -> register_client($db,$_POST['email_reg'], $_POST['first_name'], $_POST['last_name'], $_POST['phone_no'], $_POST['password'], $_FILES['pasth'])
+    if(isset($_POST['email_reg'])){
+
+      echo $my_controller -> register_client($db,$_POST['email_reg'], $_POST['first_name'], $_POST['last_name'], $_POST['phone_no'], $_POST['password'], $_FILES['user_photo']);
       exit();
     }
-    if($_POST['email_log']){
-     $my_controller -> login($db,$_POST['email_log'],$_POST['password'])
+
+
+    if(isset($_POST['email_reg_admin'])){
+
+        echo $my_controller -> register_admin($db,$_POST['email_reg'], $_POST['first_name'], $_POST['last_name'], $_POST['phone_no'], $_POST['password'], $_FILES['pasth']);
+        exit();
+  
+    }
+
+
+
+    if(isset($_POST['email_log'])){
+
+        $_SESSION['id'] = null;
+        $my_controller -> login($db,$_POST['email_log'],$_POST['password']);
+
+     $error_code = 0;
+     $message = "";
+
 
      if ($_SESSION['id'] != null) {
-         # code...
-         if($_SESSION['role'] == 'client'){
-            header('Location: http://localhost/investment/client.html');
-            exit;
-         }elseif ($_SESSION['role'] == 'admin') {
-             # code...
-             header('Location: http://localhost/investment/admin.html');
-             exit;
-         }
+        
+        $error_code = 1;
+        $message = $_SESSION['role'];
+           
+     }else{
+        $message = "There was an issue with your login";
+     
      }
+     $response = array("code"=>$error_code, "message"=>$message);
+     
+     print_r(json_encode($response));
+     exit();
     }
     
 
 }
 
+if($_GET){
+    if(isset($_GET["option"])){
 
+        //echo $_SESSION['fname'];
+        //$response = array("code"=>$error_code, "message"=>$message);
+     
+        print_r(json_encode($_SESSION));
+       
+    }
+}
 
 
 // Class and its functions
 
 class Db_controller{
+
+
+    function random_gen($db){
+
+        $random = rand(0,1000000000);
+
+        $query = "SELECT entity_id FROM entitys WHERE account_number = '$random'";
+
+        $result = pg_query($db, $query);
+
+        if (!$result) {
+            return $random;
+        }
+    
+    return 0;
+    }
+
 
     function login($db,$email,$password){
         $query = "SELECT entity_id,account_number,function_role,first_name,last_name FROM entitys WHERE email = '$email' AND entity_password = '$password'";
@@ -67,19 +113,19 @@ class Db_controller{
 
     function register_client($db,$email, $fname, $lname, $phone_no, $my_pass, $path){
 
-        $random = random_gen($db);
+        $random = $this -> random_gen($db);
 
-        $result_from_image_path_user = familyName($_FILES['image_path'],'upload_images/');
-
-        if($result == 0 ){
-            return "Failed on image upload";
-        }
+        $result_from_image_path_user = $this -> familyName($path,'upload_images/');
 
         
+        if ($result_from_image_path_user === 'File already exist' || $result_from_image_path_user === 'File not uploaded') {
+            # code...
+            return $result_from_image_path_user;
+        }
 
         $query = "INSERT INTO entitys(
              account_number, email, first_name, last_name, phone_number, entity_password, image_path, function_role, activated, approved)
-            VALUES ( $random, $email, $fname, $lname, $phone_no, $my_pass, $result_from_image_path_user, 'client', 'f', 'f')";
+            VALUES ( '$random', '$email', '$fname', '$lname', '$phone_no', '$my_pass', '$result_from_image_path_user', 'client', 'f', 'f')";
 
 
         $result = pg_query($db, $query);
@@ -95,20 +141,37 @@ class Db_controller{
 
     }
 
-    function random_gen($db){
 
-        $random = rand(0,1000000000);
+    function register_admin($db,$email, $fname, $lname, $phone_no, $my_pass, $path){
 
-        $query = "SELECT entity_id FROM entitys WHERE account_number = '$random'";
+        $random = random_gen($db);
+
+        $result_from_image_path_user = familyName($_FILES['image_path'],'upload_images/');
+
+        if($result == 0 ){
+            return "Failed on image upload";
+        }
+
+        
+
+        $query = "INSERT INTO entitys(
+             account_number, email, first_name, last_name, phone_number, entity_password, image_path, function_role, activated, approved)
+            VALUES ( $random, $email, $fname, $lname, $phone_no, $my_pass, $result_from_image_path_user, 'admin', 'f', 'f')";
+
 
         $result = pg_query($db, $query);
 
-        if (!$result) {
-            return $random;
-        }else {
-            random_gen($db);
+        if(!$result){
+
+            return "Client was not added";
         }
+        else{
+            return"Client was added to the system";
+        }
+
+
     }
+
     function familyName($filename,$folder) {
 
         $target_dir = $folder;
@@ -117,14 +180,14 @@ class Db_controller{
            $error = "";
             
            if (file_exists($target_file)) {
-               $error = $target_dir."File already exist";
-               return 0;
+               $error ="File already exist";
+               return $error;
            } elseif(move_uploaded_file($tmp_image, $target_file)){
-               return $filename['name'];
-              // return $target_dir;
-       } else{
+               return $target_file;
+              
+         } else{
                $error = "File not uploaded";
-               return 0;
+               return $error;
        }               
     }
     

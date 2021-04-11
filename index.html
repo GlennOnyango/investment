@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="css/animate.css" rel="stylesheet">
-    <title>Happy Tots community development center</title>
+    <title>Global Investments AND banking</title>
   </head>
   <body style="background-image: url('background/banking-and-savings-JG8S8GJ.jpg');background-repeat: no-repeat;background-size: cover">
 
@@ -80,13 +80,13 @@
     <div class="row" style="margin-left: 0%;margin-right: 0%;">
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 offset-lx-4 offset-lg-4 offset-md-4 offset-sm-2 pt-3 shadow-lg" style="background-color: rgba(255, 255, 255, 0.5);">
         <h3 class="text-center text-primary ">Global Investments and bank LTD</h3>
-        <form class="row"> 
+        <form class="row" method="POST" action="" id="log_form"> 
 
           <label for="email_user" class="form-label">Username </label>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" name="email_login" id="email_user" class="form-control" placeholder="Enter email address " aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" name="email_log" id="email_user" class="form-control" placeholder="Enter email address " aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
 
@@ -95,7 +95,7 @@
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">P</span>
-            <input type="password" name="password_login" id="password_user" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="password" name="password" id="password_user" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="basic-addon1">
           </div>
 
           <p class="text-center"><button type="submit" class="btn btn-success">Login</button> <button class="btn btn-success">Cancel</button></p>
@@ -113,12 +113,12 @@
         <h5 class="modal-title" id="staticBackdropLabel">Recover Password</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="reg_form" action="" method="POST">
+      <form id="rec_form" action="" method="POST">
              <div class="modal-body">
 
           <label for="first_name">Email address</label>
           <div class="input-group mb-3">
-            <input type="email" id="first_name" name="email_recover" class="form-control" required placeholder="Enter Email address" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="email" id="email_rec" name="email_recover" class="form-control" required placeholder="Enter Email address" aria-label="Username" aria-describedby="basic-addon1">
           </div>
           
 
@@ -144,7 +144,7 @@
         <h5 class="modal-title" id="staticBackdropLabel">Welcome aboard</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="reg_form" action="" method="POST">
+      <form id="reg_form" action="" method="POST" enctype="multipart/form-data">
              <div class="modal-body">
 
           <label for="first_name">Fisrt Name *</label>
@@ -159,12 +159,12 @@
 
           <label for="email">Email *</label>
           <div class="input-group mb-3">
-            <input type="email" id="email" name="email" class="form-control" required placeholder="email address" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="email" id="email" name="email_reg" class="form-control" required placeholder="email address" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
           <label for="phone">Phone *</label>
           <div class="input-group mb-3">
-            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Phone number" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="tel" id="phone" name="phone_no" class="form-control" required placeholder="Phone number" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
 
