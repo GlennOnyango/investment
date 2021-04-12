@@ -26,3 +26,6 @@ CREATE TABLE payments(
       FOREIGN KEY(account_number) 
 	  REFERENCES entitys(account_number)
 );
+
+	ALTER TABLE payments
+	ADD COLUMN approve boolean default 'f';

@@ -1,6 +1,7 @@
 var change_the_page = document.querySelectorAll("#change_the_page");
 var show_page = document.querySelectorAll(".show_page");
 
+var make_payments = document.querySelector("#make_payments");
 
 
 change_the_page.forEach(element => {
@@ -16,14 +17,53 @@ change_the_page.forEach(element => {
     });
 });
 
+make_payments.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(make_payments);
+    //    for (var value of formData.values()) {
+    //      console.log(value);
+    //}
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://localhost/investment/php/Api.php",
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function(data) {
+
+            console.log("SUCCESS : ", data);
+
+        },
+        error: function(e) {
+
+            console.log("ERROR : ", e);
+
+        },
+        done: function(e) {
+
+            console.log("Done :", e);
+        }
+
+    });
+
+
+
+
+
+    console.log("done");
+});
+
+
+
 $(document).ready(function() {
     // your code
 
     $.get("http://localhost/investment/php/Api.php", { option: "Data" }, function(data, status) {
-        console.log("Data: " + typeof data + "\nStatus: " + status);
 
         const obj = JSON.parse(data);
-        console.log(obj);
         $("#client_name").text(obj.fname);
 
 
@@ -34,6 +74,11 @@ $(document).ready(function() {
         $("#editable_lname").text(obj.sname);
         $("#editable_mail").text(obj.mail);
         $("#editable_phone").text(obj.pno);
+
+
+        //form init
+
+        $("#acc_no_make_pay").val(obj.acc_no);
 
     });
 

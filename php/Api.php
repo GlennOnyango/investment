@@ -23,6 +23,7 @@ if ($_POST) {
   
     }
 
+    
 
 
     if(isset($_POST['email_log'])){
@@ -49,6 +50,11 @@ if ($_POST) {
      exit();
     }
     
+    if(isset($_POST['acc_no_make_pay'])){
+
+        echo $my_controller -> make_payments($db,$_POST['acc_no_make_pay'], $_POST['receipt_no'], $_POST['payment_date'], $_POST['amount'], $_FILES['receipt_photo']);
+        exit();
+    }
 
 }
 
@@ -191,6 +197,71 @@ class Db_controller{
                $error = "File not uploaded";
                return $error;
        }               
+    }
+
+    function make_payments($db,$acc_no, $rec_no, $pay_date, $amount, $path){
+      
+        $result_from_image_path_user = $this -> familyName($path,'receipt_images/');
+
+        if ($result_from_image_path_user === 'File already exist' || $result_from_image_path_user === 'File not uploaded') {
+            # code...
+            return $result_from_image_path_user;
+        }
+
+
+        $query = "INSERT INTO public.payments(
+             account_number, receipt_no, payment_date, payment_data_sumbit, payment_amount, receipt_image)
+            VALUES ('$acc_no', '$rec_no', '$pay_date', now(), '$amount', '$result_from_image_path_user');";
+        
+        $result = pg_query($db, $query);
+
+        if(!$result){
+
+            return "Payment not made";
+        }
+        else{
+            return"Payment made awaiting approval";
+        }
+    
+ 
+        
+    }
+        
+    function get_payments(){
+  
+        $query = "SELECT * from payments WHERE account_number ='$acc_no'";
+
+        $result = pg_query($db, $query);
+
+        if (!$result) {
+            echo ' <tr>
+            <th colspan="5">
+                <p class="text">No data</p>
+            </th>
+
+        </tr>';
+        }
+        while($row=pg_fetch_assoc($result)){
+
+            $app_rating = 'not approved ';
+            if(row['approve'] != false){
+
+            }
+
+            echo'
+            <tr>
+                            <th scope="row">'.$row['account_number'].'</th>
+                            <td>'.$row['payment_date'].'</td>
+                            <td>'.$row['receipt_no'].'</td>
+                            <td>'.$row['payment_amount'].'</td>
+                            <td>'.row['approve'].'</td>
+                        </tr>
+            ';
+        }
+
+        
+
+
     }
     
 }

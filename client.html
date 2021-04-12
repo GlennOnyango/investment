@@ -95,26 +95,33 @@
 
 
         <!--Make Payments -->
-        <form class="row show_page d-none" id="make_payments">
+        <form class="row show_page d-none" method="POST" action="" id="make_payments">
             <h3 class="text-center mt-3 display-6">Make Payments</h3>
+
+
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                 <label for="rec_no">Receipt No *</label>
-                <input type="text" id="rec_no" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control">
+                <input type="text" id="rec_no" name="receipt_no" required placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control">
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                 <label for="payment_date">Payment Date *</label>
-                <input type="date" id="payment_date" class="form-control">
+                <input type="date" name="payment_date" required id="payment_date" class="form-control">
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
                 <label for="rec_no">Amount paid *</label>
-                <input type="number" placeholder="$0" class="form-control">
+                <input type="number" name="amount" required placeholder="$0" class="form-control">
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label for="rec_no">Upload Receipt pdf *</label>
-                <input type="file" class="form-control" name="user_photo" required accept="image/x-png,image/gif,image/jpeg" id="inputGroupFile02">
+                <input type="file" class="form-control" name="receipt_photo" required accept="image/x-png,image/gif,image/jpeg" id="inputGroupFile02">
 
             </div>
-            <p class="text-center mt-4"><button class="btn btn-primary rounded-0">Register Deposit</button></p>
+
+            <div class="col-12 mb-3">
+                <label for="rec_no">Receipt No *</label>
+                <input type="text" id="acc_no_make_pay" name="acc_no_make_pay" required placeholder="account number" class="form-control">
+            </div>
+            <p class="text-center mt-4"><button type="submit" class="btn btn-primary rounded-0">Register Deposit</button></p>
         </form>
         <!--End of Make Payments-->
 
@@ -163,7 +170,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">account no</th>
                             <th scope="col">Deposit Date</th>
                             <th scope="col">Receipt Number</th>
                             <th scope="col">Amount</th>
@@ -172,21 +179,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+
                         </tr>
                     </tbody>
                 </table>
