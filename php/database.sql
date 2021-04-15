@@ -27,5 +27,6 @@ CREATE TABLE payments(
 	  REFERENCES entitys(account_number)
 );
 
+
 	ALTER TABLE payments
-	ADD COLUMN approve boolean default 'f';
+	ADD COLUMN approved VARCHAR default 'pending';

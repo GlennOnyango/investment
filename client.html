@@ -118,7 +118,7 @@
             </div>
 
             <div class="col-12 mb-3">
-                <label for="rec_no">Receipt No *</label>
+                <label for="rec_no">Account No *</label>
                 <input type="text" id="acc_no_make_pay" name="acc_no_make_pay" required placeholder="account number" class="form-control">
             </div>
             <p class="text-center mt-4"><button type="submit" class="btn btn-primary rounded-0">Register Deposit</button></p>
@@ -132,36 +132,50 @@
 
             <h3 class="text-center mt-3 display-6">Check Balance </h3>
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <form action="" class="col-12" method="POST" id="date_range">
 
-                <label for="from_date">From Date</label>
-                <input class="form-control" type="date" id="from_date">
-            </div>
+                <div class="row">
 
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-
-                <label for="from_date">To Date</label>
-                <input class="form-control" type="date" id="to_date">
-            </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-
-                <p class="text-center">
-
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </button>
-                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                        </ul>
+                        <label for="from_date">From date</label>
+                        <input class="form-control" name="from_date" type="date" id="from_date">
                     </div>
 
-                </p>
-            </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+
+                        <label for="from_date">To date</label>
+                        <input class="form-control" name="to_date" type="date" id="to_date">
+                    </div>
+
+                    <input class="form-control" name="acc_no" type="text" hidden id="acc_no_pyda">
+
+
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+
+                        <p class="text-center">
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Filter By
+                          </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <li><button type="submit" class="dropdown-item">Deposit date</button></li>
+                                    <li><a class="dropdown-item" id="showall">All payments</a></li>
+                                </ul>
+                            </div>
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+
+
+            </form>
+
+
 
 
             <div class="col-12">
@@ -177,10 +191,7 @@
                             <th scope="col">Approval</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-
-                        </tr>
+                    <tbody id="my_tbody">
                     </tbody>
                 </table>
                 <!--All table-->

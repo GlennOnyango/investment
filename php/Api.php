@@ -24,8 +24,6 @@ if ($_POST) {
     }
 
     
-
-
     if(isset($_POST['email_log'])){
 
         $_SESSION['id'] = null;
@@ -56,17 +54,26 @@ if ($_POST) {
         exit();
     }
 
+    if(isset($_POST['from_date'])){
+
+        $my_controller -> get_payments_date_range($db,$_POST['acc_no'],$_POST['from_date'],$_POST['to_date']);
+    }
+
 }
 
 if($_GET){
     if(isset($_GET["option"])){
 
-        //echo $_SESSION['fname'];
-        //$response = array("code"=>$error_code, "message"=>$message);
      
         print_r(json_encode($_SESSION));
-       
+    exit();   
     }
+
+    if(isset($_GET["account_number"])){
+
+        echo $my_controller -> get_payments($db,$_GET["account_number"]);
+    }
+    
 }
 
 
@@ -227,7 +234,42 @@ class Db_controller{
         
     }
         
-    function get_payments(){
+  
+    function get_payments_date_range($db,$acc_no,$mydatefrom,$mydateto){
+
+        $query = "SELECT * from payments WHERE account_number ='$acc_no' AND payment_date >= '$mydatefrom' AND payment_date <= '$mydateto'";
+
+        $result = pg_query($db, $query);
+
+        if (!$result) {
+            echo ' <tr>
+            <th colspan="5">
+                <p class="text">No data</p>
+            </th>
+
+        </tr>';
+
+        }
+        while($row=pg_fetch_assoc($result)){
+
+                echo'
+                <tr>
+                                <th scope="row">'.$row['account_number'].'</th>
+                                <td>'.$row['payment_date'].'</td>
+                                <td>'.$row['receipt_no'].'</td>
+                                <td>'.$row['payment_amount'].'</td>
+                                <td>'.$row['approved'].'</td>
+                            </tr>
+                ';
+
+        }
+
+        
+
+
+    }
+
+    function get_payments($db,$acc_no){
   
         $query = "SELECT * from payments WHERE account_number ='$acc_no'";
 
@@ -243,20 +285,16 @@ class Db_controller{
         }
         while($row=pg_fetch_assoc($result)){
 
-            $app_rating = 'not approved ';
-            if(row['approve'] != false){
+                echo'
+                <tr>
+                                <th scope="row">'.$row['account_number'].'</th>
+                                <td>'.$row['payment_date'].'</td>
+                                <td>'.$row['receipt_no'].'</td>
+                                <td>'.$row['payment_amount'].'</td>
+                                <td>'.$row['approved'].'</td>
+                            </tr>
+                ';
 
-            }
-
-            echo'
-            <tr>
-                            <th scope="row">'.$row['account_number'].'</th>
-                            <td>'.$row['payment_date'].'</td>
-                            <td>'.$row['receipt_no'].'</td>
-                            <td>'.$row['payment_amount'].'</td>
-                            <td>'.row['approve'].'</td>
-                        </tr>
-            ';
         }
 
         
