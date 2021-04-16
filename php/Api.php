@@ -73,6 +73,9 @@ if($_GET){
 
         echo $my_controller -> get_payments($db,$_GET["account_number"]);
     }
+    if(isset($_GET["admin"])){
+        echo $my_controller -> get_payments_admin($db);
+    }
     
 }
 
@@ -302,6 +305,53 @@ class Db_controller{
 
     }
     
+
+    function get_payments_admin($db){
+  
+        $query = "SELECT * from payments";
+
+        $result = pg_query($db, $query);
+
+        if (!$result) {
+            echo ' <tr>
+            <th colspan="5">
+                <p class="text">No data</p>
+            </th>
+
+        </tr>';
+        }
+        while($row=pg_fetch_assoc($result)){
+
+
+            if($row['approved'] == "decline" || $row['approved'] == "pending"){
+                echo'
+                <tr>
+                                <th scope="row">'.$row['account_number'].'</th>
+                                <td>'.$row['payment_date'].'</td>
+                                <td>'.$row['receipt_no'].'</td>
+                                <td>'.$row['payment_amount'].'</td>
+                                <td><button class="btn btn-success target" onclick="approve_reject(this)" id="'.$row['receipt_no'].'">approve</button></td>
+                            </tr>
+                ';
+            }else{
+                echo'
+                <tr>
+                                <th scope="row">'.$row['account_number'].'</th>
+                                <td>'.$row['payment_date'].'</td>
+                                <td>'.$row['receipt_no'].'</td>
+                                <td>'.$row['payment_amount'].'</td>
+                                <td><button class="btn btn-danger">decline</button></td>
+                            </tr>
+                ';
+            }
+                
+
+        }
+
+        
+
+
+    }
 }
 
 
