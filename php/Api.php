@@ -54,6 +54,9 @@ if ($_POST) {
         exit();
     }
 
+    if(isset($_POST['myevent'])){
+        print_r($my_controller -> approve_payments($db,$_POST['myevent'],$_POST['account_number']));
+    }
     if(isset($_POST['from_date'])){
 
         $my_controller -> get_payments_date_range($db,$_POST['acc_no'],$_POST['from_date'],$_POST['to_date']);
@@ -340,7 +343,7 @@ class Db_controller{
                                 <td>'.$row['payment_date'].'</td>
                                 <td>'.$row['receipt_no'].'</td>
                                 <td>'.$row['payment_amount'].'</td>
-                                <td><button class="btn btn-danger">decline</button></td>
+                                <td><button class="btn btn-danger target" onclick="approve_reject(this)" id="'.$row['receipt_no'].'" >decline</button></td>
                             </tr>
                 ';
             }
@@ -350,6 +353,23 @@ class Db_controller{
 
         
 
+
+    }
+
+    function approve_payments($db,$trigger,$account){
+        
+        $query = "UPDATE payments SET approved = '$trigger' WHERE receipt_no = '$account'";
+
+        $result = pg_query($db, $query);
+
+        $trigger = $trigger.'d';
+  
+        if(!$result){
+            return $response = array("code"=>"0", "message"=>"Payment $trigger");
+        }
+        else{
+            return $response = array("code"=>"1", "message"=>"Payment $trigger");
+        }      
 
     }
 }

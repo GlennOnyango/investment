@@ -19,6 +19,7 @@ CREATE TABLE payments(
     account_number   varchar(10) ,
     receipt_no        varchar(20) UNIQUE,
     payment_date     date,
+    approved         VARCHAR(20) default 'pending',
     payment_data_sumbit DATE ,
     payment_amount   real,
     receipt_image    varchar(100),

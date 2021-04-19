@@ -28,7 +28,16 @@ function getpaymnet(acc_no) {
 }
 
 function approve_reject(e) {
-    console.log(e.id + "" + e.textContent);
+    let myobjt = { account_number: e.id, myevent: e.textContent };
+
+    $.post("http://localhost/investment/php/Api.php",
+        myobjt,
+        function(data, status) {
+            console.log(data);
+            alert(data.message);
+            getpaymnet(sessionStorage.getItem("account_number"));
+
+        }, "json");
 }
 
 
